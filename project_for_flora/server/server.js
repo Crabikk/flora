@@ -7,8 +7,8 @@ const plantsRouter = require('./routes/plantsRouter')
 const habitatsRouter = require('./routes/habitatsRouter')
 const plantHabitatsRouter = require('./routes/plantHabitatsRouter')
 const growingConditionsRouter = require('./routes/growingConditionsRouter')
-const usersRouter = require('./routes/usersRouter')
-const observationsRouter = require('./routes/observationsRouter')
+const benefitsRouter = require('./routes/benefitsRouter')
+const harvestsRouter = require('./routes/harvestsRouter')
 
 
 const PORT = 5000
@@ -23,8 +23,8 @@ server.use('/plants', plantsRouter)
 server.use('/habitats', habitatsRouter)
 server.use('/planthabitats', plantHabitatsRouter)
 server.use('/growingconditions', growingConditionsRouter)
-server.use('/users', usersRouter)
-server.use('/observations', observationsRouter)
+server.use('/benefits', benefitsRouter)
+server.use('/harvests', harvestsRouter)
 
 db.authenticate().then(() => {
     console.log(`db START`);

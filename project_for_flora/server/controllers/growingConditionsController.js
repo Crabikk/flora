@@ -18,7 +18,7 @@ class GrowingConditionsController {
             const existingPlant = await GrowingConditionsModel.findOne({ where: { plant_id } });
 
             if (existingPlant) {
-                return res.status(400).json({ message: "Такое растение уже есть" });
+                return res.status(400).json({ message: "Такие условия роста уже есть" });
             }
 
             await GrowingConditionsModel.create({ id, plant_id, light_level, humidity, temperature });
@@ -30,7 +30,7 @@ class GrowingConditionsController {
         }
     }
 
-    deletePlant(req, res) {
+    deleteGrowingCondition(req, res) {
         const { id } = req.body
         GrowingConditionsModel.destroy({
             where: { id }
@@ -38,19 +38,19 @@ class GrowingConditionsController {
             .then(plants => {
                 console.log(plants)
                 if (plants === 0) {
-                    res.send({ message: "Такое растение не найдено" }).status(400)
+                    res.send({ message: "Такие условия роста не найдены" }).status(400)
                 }
                 else {
-                    res.json({ message: "Растение успешно удалено" })
+                    res.json({ message: "Условия роста успешно удалены" })
                 }
             })
             .catch(err => {
                 console.log(err)
-                res.json({ message: "Не удалось удалить растение" }).status(400)
+                res.json({ message: "Не удалось удалить условия роста" }).status(400)
             })
     }
 
-    updatePlant(req, res) {
+    updateGrowingCondition(req, res) {
         const { id, plant_id, light_level, humidity, temperature } = req.body
         if (!plant_id || !light_level || !humidity || !temperature) {
             return res.status(400).json({ message: "Обновите хотя бы одно условие" })

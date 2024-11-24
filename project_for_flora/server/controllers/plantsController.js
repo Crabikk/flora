@@ -35,7 +35,7 @@ getAllPlants(req, res) {
 }
 
     async createPlant(req, res) {
-    const { plant_name, scientific_name, type, family, description, date_added } = req.body;
+    const { plant_name, scientific_name, type, family, description} = req.body;
     const id = uuidv4();
 
     try {
@@ -45,7 +45,7 @@ getAllPlants(req, res) {
             return res.status(400).json({ message: "Такое растение уже есть" });
         }
 
-        await PlantsModel.create({ id, plant_name, scientific_name, type, family, description, date_added });
+        await PlantsModel.create({ id, plant_name, scientific_name, type, family, description });
 
         res.json({ message: "Растение успешно добавлено" });
     } catch (err) {
@@ -77,12 +77,12 @@ deletePlant(req, res) {
 }
 
 updatePlant(req, res) {
-    const { id, plant_name, scientific_name, type, family, description, date_added } = req.body
+    const { id, plant_name, scientific_name, type, family, description } = req.body
     if (!plant_name || !scientific_name || !type || !family || !description) {
         return res.status(400).json({ message: "Обновите хотя бы одно растение" })
     }
     PlantsModel.update(
-        { plant_name, scientific_name, type, family, description, date_added },
+        { plant_name, scientific_name, type, family, description },
         { where: { id } }
     )
         .then(([updatedCount]) => {

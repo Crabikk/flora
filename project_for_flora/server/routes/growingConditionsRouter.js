@@ -5,7 +5,7 @@ const growingConditionsRouter = express.Router()
 
 growingConditionsRouter.get('/', GrowingConditionsController.getAllGrowingConditions)
                        .post('/', GrowingConditionsController.createGrowingCondition)
-                       .delete('/', GrowingConditionsController.deletePlant)
-                       .put('/', GrowingConditionsController.updatePlant)
+                       .delete('/', GrowingConditionsController.deleteGrowingCondition)
+                       .put('/', GrowingConditionsController.deleteGrowingCondition)
 
 module.exports = growingConditionsRouter

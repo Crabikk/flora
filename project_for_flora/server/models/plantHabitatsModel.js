@@ -32,10 +32,6 @@ const PlantHabitatsModel = db.define('plant_habitats', {
         type: DataTypes.TEXT,
         allowNull: true // Поле может быть пустым
     },
-    date_recorded: {
-        type: DataTypes.DATEONLY, // Для хранения только даты
-        allowNull: true // Поле может быть пустым
-    },
     is_active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true // Значение по умолчанию
