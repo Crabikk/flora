@@ -9,11 +9,11 @@ function App() {
   return (
     <>
       <Layout>
-        <Header>Header</Header>
+        <Header></Header>
         <Content>
-          <Router/>
+          <Router />
         </Content>
-        <Footer>Footer</Footer>
+        <Footer></Footer>
       </Layout>
     </>
   )

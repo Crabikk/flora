@@ -6,7 +6,13 @@
 }
 .plantsList__grid{
     display:grid;
-    grid-template-columns: repeat(4, 400px);
+    grid-template-columns: repeat(4, 20%);
     justify-content: center;
     gap: 50px;
+}
+
+@media (max-width: 900px) {
+    .plantsList__grid {
+        grid-template-columns: 1fr; 
+    }
 }

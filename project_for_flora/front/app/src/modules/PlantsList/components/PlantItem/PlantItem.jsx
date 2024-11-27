@@ -2,6 +2,8 @@ import { Card } from 'antd';
 import { Link } from "react-router-dom"
 
 
+
+
 const PlantItem = ({ plant }) => {
     return (
         <Link to={`/plant/${plant.id}`}>
