@@ -33,7 +33,7 @@ ALTER TABLE Growing_Conditions ADD CONSTRAINT check_light_level CHECK (light_lev
 ALTER TABLE Growing_Conditions ADD CONSTRAINT check_humidity CHECK (humidity IN ('низкая', 'средняя', 'высокая'));
 ```
 
-### В таблице Plant_Habitats можно добавить поле total_plants, которое будет автоматически вычисляться с помощью триггера. Это поле будет показывать количество растений, связанных с конкретной экологической нишей.
+#### В таблице Plant_Habitats можно добавить поле total_plants, которое будет автоматически вычисляться с помощью триггера. Это поле будет показывать количество растений, связанных с конкретной экологической нишей.
 
 
 ## Этап 2: Создание базы данных в СУБД PostgreSQL. Заполнение таблиц данными. Составление осмысленных запросов к базе данных.
@@ -42,28 +42,28 @@ ALTER TABLE Growing_Conditions ADD CONSTRAINT check_humidity CHECK (humidity IN 
 
 ### 20 осмысленных запросов к базе данных(код в приложении).
 
-- 1. Вывести все растения с их научными названиями и типами.
-- 2. Найти все уникальные семейства растений.
-- 3. Вывести все растения, которые относятся к семейству "Астровые".
-- 4. Найти все растения, которые могут расти в окружающей среде "Пойма реки".
-- 5. Вывести все растения, которые требуют среднюю освещенность.
-- 6. Найти все растения, которые приносят пользу для здоровья, то есть лекарственные.
-- 7. Вывести все растения, которые собираются летом.
-- 8. Найти все растения, которые требуют температуру выше 15°C.
-- 9. Найти все растения, у которых есть информация о сборе урожая осенью и росте в условиях средней влажности.
-- 10. Найти все растения, которые могут расти в нескольких средах обитания.
-- 11. Вывести все растения, которые были добавлены за последний месяц.
-- 12. Найти все растения, которые требуют высокой влажности.
-- 13. Вывести все растения, у которых есть информация о росте в условиях средней освещенности.
-- 14. Вывести все растения, у которых есть информация о пользе для экологии и росте в условиях умеренной температуры (от 10°C до 20°C).
-- 15. Найти все растения, которые могут расти в "Лесу" и имеют научные названия, начинающиеся на "A".
-- 16. Вывести все растения, у которых есть информация о сборе урожая с помощью ножниц.
-- 17. Вывести все растения с указанием их условий роста (освещение, влажность, температура).
-- 18. Найти все растения, которые растут в "Садах" и имеют среднюю освещенность.
-- 19. Вывести все растения с их научными названиями и временем сбора урожая, отсортированные по времени сбора.
-- 20. Найти все растения, которые имеют более одного описания преимуществ.
+##### 1. Вывести все растения с их научными названиями и типами.
+##### 2. Найти все уникальные семейства растений.
+##### 3. Вывести все растения, которые относятся к семейству "Астровые".
+##### 4. Найти все растения, которые могут расти в окружающей среде "Пойма реки".
+##### 5. Вывести все растения, которые требуют среднюю освещенность.
+##### 6. Найти все растения, которые приносят пользу для здоровья, то есть лекарственные.
+##### 7. Вывести все растения, которые собираются летом.
+##### 8. Найти все растения, которые требуют температуру выше 15°C.
+##### 9. Найти все растения, у которых есть информация о сборе урожая осенью и росте в условиях средней влажности.
+##### 10. Найти все растения, которые могут расти в нескольких средах обитания.
+##### 11. Вывести все растения, которые были добавлены за последний месяц.
+##### 12. Найти все растения, которые требуют высокой влажности.
+##### 13. Вывести все растения, у которых есть информация о росте в условиях средней освещенности.
+##### 14. Вывести все растения, у которых есть информация о пользе для экологии и росте в условиях умеренной температуры (от 10°C до 20°C).
+##### 15. Найти все растения, которые могут расти в "Лесу" и имеют научные названия, начинающиеся на "A".
+##### 16. Вывести все растения, у которых есть информация о сборе урожая с помощью ножниц.
+##### 17. Вывести все растения с указанием их условий роста (освещение, влажность, температура).
+##### 18. Найти все растения, которые растут в "Садах" и имеют среднюю освещенность.
+##### 19. Вывести все растения с их научными названиями и временем сбора урожая, отсортированные по времени сбора.
+##### 20. Найти все растения, которые имеют более одного описания преимуществ.
 
-## Этап 3: Добавление индесов в базу данных и обоснование их использования. Добавление триггера, придуманного на 1 этапе и добавление 5 процедур.
+## Этап 3: Добавление индексов в базу данных и обоснование их использования. Добавление триггера, придуманного на 1 этапе и добавление 5 процедур.
 
 ### Индекс для таблицы Plants
 ```sql
@@ -79,11 +79,47 @@ CREATE INDEX index_plants_plant_name ON Plants(plant_name);
 
 ### Добавление пяти процедур(код в приложении).
 
-- 1. Процедура для добавления нового растения
-- 2. Процедура для получения всех растений в определенном семействе
-- 3. Процедура для обновления описания растения
-- 4. Процедура для удаления растения и всех связанных данных
-- 5. Процедура для получения всех растений, которые могут расти в определенном местообитании
+##### 1. Процедура для получения списка растений, которые приносят определенный тип пользы.
+##### 2. Процедура для получения растений, которые можно собирать в определенное время года.
+##### 3. Процедура для поиска растений по части названия
+##### 4. Процедура для получения растений, которые растут в нескольких средах обитания и имеют несколько видов пользы
+##### 5. Процедура для получения статистики по количеству растений, которые растут в условиях определенного уровня влажности
+
+## Этап 4: Разработка программы для работы с базой данных.
+Для того, чтобы протестировать работу интерфейса с базой данных, необходимо для начала создать таблицы этой базы данных(таблицы можно найти в приложении), после можно заполнить данными, которые тоже есть в приложении. Очень важный момент не забыть изменить файл db.js, который выглядит следующим образом:
+```sql
+const { Sequelize } = require("sequelize");
+
+const db = new Sequelize("flora_zelenograd", "postgres", "qwerty22", {
+  host: "localhost",
+  dialect: "postgres",
+  port: 5432,
+});
+
+module.exports = db;
+```
+- flora_zelenograd - это название Базы Данных (должно совпадать с тем, что написано в Базе Данных)
+- postgres - оставляем неизменным
+- qwerty22 - пароль от postgres
+- host так как запускаем только на своей машине, то оставляем неизменным
+- dialect оставляем неизменным
+- port оставляем неизменным
+
+ Затем клонируем репозиторий, заходим в терминал и переходим в папку "server", где пишем:
+```bash
+npm run dev
+```
+Переходим в папку front, затем в app, пишем в терминале:
+```bash
+npm run dev
+```
+
+В терминале появится ссылка, переходим по ней и попадаем на страничку для управления базой данных, выглядеть она будет следующи образом:
+ [http://localhost:5173/](http://localhost:5173/)
+ 
+ По центру страницы есть кнопка создания растения(не возникнет проблем с заполнением, так как все поля подписаны и есть обработка ошибок), если нажать по любой из карточек доступных растений, то доступны следующие функции: удаление и обновление(изменение информации о данном растении).
+
+
 
 ## Приложение
 ### Заполнение таблицы Plants
@@ -461,113 +497,165 @@ SET total_plants = (
 );
 ```
 
-#### Добавление процедур
-1. Процедура для получения списка растений, которые приносят определенный тип пользы.
+### Добавление процедур
+1. Процедура для добавления растения
 ```sql
-CREATE OR REPLACE PROCEDURE Get_Plants_By_Benefit_Type(
+CREATE OR REPLACE PROCEDURE add_plant(
+    p_plant_name VARCHAR(100),
+    p_scientific_name VARCHAR(100),
+    p_type VARCHAR(50),
+    p_family VARCHAR(50),
+    p_description TEXT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO Plants (plant_name, scientific_name, type, family, description)
+    VALUES (p_plant_name, p_scientific_name, p_type, p_family, p_description);
+END;
+$$;
+```
+Пример использования
+```sql
+CALL add_plant('Скала', 'SCALA', 'STRONG', 'BLACK', 'YEP');
+```
+2. Процедура для обновления растения
+```sql
+CREATE OR REPLACE PROCEDURE update_plant(
+    p_plant_id UUID,
+    p_plant_name VARCHAR(50),
+    p_scientific_name VARCHAR(50),
+    p_type VARCHAR(50),
+    p_family VARCHAR(50),
+    p_description TEXT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE Plants
+    SET
+        plant_name = p_plant_name,
+        scientific_name = p_scientific_name,
+        type = p_type,
+        family = p_family,
+        description = p_description,
+        "updatedAt" = CURRENT_TIMESTAMP
+    WHERE ID = p_plant_id;
+END;
+$$;
+```
+Пример использования
+```sql
+CALL update_plant('3b6173fb-59dc-4f19-bd80-159f6db37607', 'Скала?', 'SCALA', 'STRONG', 'BIG', 'YEP');
+```
+3. Процедура для удаления растения и всей информации о нем
+```sql
+CREATE OR REPLACE PROCEDURE delete_plant(p_plant_id UUID)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    DELETE FROM Plants WHERE ID = p_plant_id;
+END;
+$$;
+```
+Пример использования
+```sql
+CALL delete_plant('3b6173fb-59dc-4f19-bd80-159f6db37607');
+```
+4.  Процедура для добавления среды обитания, температуры и влажности растению
+```sql
+CREATE OR REPLACE PROCEDURE add_growing_conditions(
+    p_plant_id UUID,
+    p_light_level VARCHAR(50),
+    p_humidity VARCHAR(50),
+    p_temperature NUMERIC
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO Growing_Conditions (plant_id, light_level, humidity, temperature)
+    VALUES (p_plant_id, p_light_level, p_humidity, p_temperature);
+END;
+$$;
+```
+Пример использования
+```sql
+CALL add_growing_conditions('b7529501-8f4d-4875-8e1c-78c429104e8f', 'Высокая', 'Высокая', 50);
+```
+5. Процедура для добавления полезной информации о растении
+```sql
+CREATE OR REPLACE PROCEDURE add_benefit(
+    p_plant_id UUID,
     p_benefit_type VARCHAR(50),
-    OUT p_plant_name VARCHAR(50),
-    OUT p_benefit_description TEXT
+    p_description TEXT
 )
 LANGUAGE plpgsql
 AS $$
 BEGIN
-    FOR p_plant_name, p_benefit_description IN
-        SELECT p.plant_name, b.description
-        FROM Plants p
-        JOIN Benefits b ON p.ID = b.plant_id
-        WHERE b.benefit_type = p_benefit_type
-    LOOP
-        RETURN NEXT;
-    END LOOP;
+    INSERT INTO Benefits (plant_id, benefit_type, description)
+    VALUES (p_plant_id, p_benefit_type, p_description);
 END;
 $$;
 ```
 Пример использования
 ```sql
-CALL Get_Plants_By_Benefit_Type('Лекарственная', NULL, NULL);
+CALL add_benefit('b7529501-8f4d-4875-8e1c-78c429104e8f', 'Актер', 'Снимался во многих фильмах');
 ```
-2. Процедура для получения растений, которые можно собирать в определенное время года.
-```sql
-CREATE OR REPLACE PROCEDURE Get_Plants_By_Harvest_Time(
-    p_harvest_time VARCHAR(50),
-    OUT p_plant_name VARCHAR(50),
-    OUT p_harvest_method VARCHAR(50)
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    FOR p_plant_name, p_harvest_method IN
-        SELECT p.plant_name, h.harvest_method
-        FROM Plants p
-        JOIN Harvest_Info h ON p.ID = h.plant_id
-        WHERE h.harvest_time = p_harvest_time
-    LOOP
-        RETURN NEXT;
-    END LOOP;
-END;
-$$;
-```
-Пример использования
-```sql
-CALL Get_Plants_By_Harvest_Time('Осень', NULL, NULL);
-```
-3. Процедура для поиска растений по части названия
-```sql
-CREATE OR REPLACE PROCEDURE Search_Plants_By_Name(
-    p_search_term VARCHAR(100),
-    OUT p_plant_name VARCHAR(100),
-    OUT p_scientific_name VARCHAR(100)
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    FOR p_plant_name, p_scientific_name IN
-        SELECT plant_name, scientific_name
-        FROM Plants
-        WHERE plant_name ILIKE '%' || p_search_term || '%'
-    LOOP
-        RETURN NEXT;
-    END LOOP;
-END;
-$$;
-```
-Пример использования
-```sql
-CALL Search_Plants_By_Name('Л', NULL, NULL);
-```
-4. Процедура для получения растений, которые растут в нескольких средах обитания и имеют несколько видов пользы
-```sql
-CREATE OR REPLACE PROCEDURE Get_Plants_In_Multiple_Habitats_With_Multiple_Benefits(
-    OUT p_plant_name VARCHAR(100),
-    OUT p_habitat_count INT,
-    OUT p_benefit_count INT
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    FOR p_plant_name, p_habitat_count, p_benefit_count IN
-        SELECT p.plant_name, COUNT(DISTINCT ph.habitat_id), COUNT(DISTINCT b.benefit_type)
-        FROM Plants p
-        JOIN Plant_Habitats ph ON p.ID = ph.plant_id
-        JOIN Benefits b ON p.ID = b.plant_id
-        GROUP BY p.plant_name
-        HAVING COUNT(DISTINCT ph.habitat_id) > 1 AND COUNT(DISTINCT b.benefit_type) > 1
-    LOOP
-        RETURN NEXT;
-    END LOOP;
-END;
-$$;
-```
-Пример использования
-```sql
-CALL Get_Plants_In_Multiple_Habitats_With_Multiple_Benefits(NULL, NULL, NULL);
-```
-5. 
-```sql
 
-```
-Пример использования
+### Таблицы для базы данных
 ```sql
-CALL Get_Plants_By_Benefit_Type('Лекарственная', NULL, NULL);
+CREATE TABLE Plants (
+    ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    plant_name VARCHAR(100) NOT NULL UNIQUE,
+    scientific_name VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    family VARCHAR(50),
+    description TEXT,
+    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Habitats (
+    ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    habitat_name VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT,
+    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Plant_Habitats (
+    ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    plant_id UUID REFERENCES Plants(ID) NOT NULL,
+    habitat_id UUID REFERENCES Habitats(ID) NOT NULL,
+    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Growing_Conditions (
+    ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    plant_id UUID REFERENCES Plants(ID) ON DELETE CASCADE NOT NULL,
+    light_level VARCHAR(50),
+    humidity VARCHAR(50),
+    temperature NUMERIC CHECK (temperature >= -50 AND temperature <= 50),
+    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Benefits (
+    ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    plant_id UUID REFERENCES Plants(ID) ON DELETE CASCADE NOT NULL,
+    benefit_type VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Harvest_Info (
+    ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    plant_id UUID REFERENCES Plants(ID) ON DELETE CASCADE NOT NULL,
+    harvest_time VARCHAR(50) NOT NULL,
+    harvest_method VARCHAR(100),
+    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 ```
