@@ -28,10 +28,6 @@ const PlantHabitatsModel = db.define('plant_habitats', {
         },
         onDelete: 'CASCADE'
     },
-    notes: {
-        type: DataTypes.TEXT,
-        allowNull: true // Поле может быть пустым
-    },
     is_active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true // Значение по умолчанию

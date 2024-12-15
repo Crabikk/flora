@@ -23,6 +23,9 @@ const HarvestModel = db.define('harvest_info', {
     harvest_method: {
         type: DataTypes.STRING(100)
     },
+    notes: {
+        type: DataTypes.TEXT
+    },
     createdAt: {
         type: DataTypes.DATE,
         defaultValue: NOW
