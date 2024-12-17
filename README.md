@@ -546,7 +546,7 @@ $$;
 ```
 Пример использования
 ```sql
-CALL add_plant('Скала', 'SCALA', 'STRONG', 'BLACK', 'YEP');
+CALL add_plant('Скала', 'SCALA', 'STRONG', 'Ya', 'YEP');
 ```
 2. Процедура для обновления растения
 ```sql
