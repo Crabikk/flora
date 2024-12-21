@@ -202,7 +202,6 @@ INSERT INTO Plants (plant_name, scientific_name, type, family, description) VALU
 ('Колокольчик большой', 'Campanula latifolia', 'Трава', 'Колокольчиковые', 'Многолетняя трава с синими цветками.'),
 ('Бузина чёрная', 'Sambucus nigra', 'Кустарник', 'Адоксовые', 'Кустарник с черными ягодами.'),
 ('Кислица обыкновенная', 'Oxalis acetosella', 'Трава', 'Кисличные', 'Многолетняя трава с кислым вкусом.'),
-('Вероника лекарственная', 'Veronica officinalis', 'Трава', 'Подорожниковые', 'Многолетняя трава с синими цветками.'),
 ('Голубика', 'Vaccinium corymbosum', 'Кустарник', 'Вересковые', 'Кустарник с синими ягодами.'),
 ('Яблоня лесная', 'Malus sylvestris', 'Дерево', 'Розовые', 'Дерево с плодами-яблоками.'),
 ('Горох', 'Pisum sativum', 'Трава', 'Бобовые', 'Зерновое растение, используемое в пищевой промышленности.'),
@@ -328,12 +327,10 @@ INSERT INTO Benefits (plant_id, benefit_type, description) VALUES
 ((SELECT ID FROM Plants WHERE plant_name = 'Осока волосистая'), 'Пищевая', 'Семена используются в кулинарии.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Дуб черешчатый'), 'Декоративная', 'Крупное дерево с красивой кроной, используется в парках.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Тысячелистник обыкновенный'), 'Лекарственная', 'Используется для лечения кожных заболеваний и воспалений.'),
-((SELECT ID FROM Plants WHERE plant_name = 'Тысячелистник обыкновенный'), 'Пищевая', 'Листья используются в чаях и салатах.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Черника обыкновенная'), 'Пищевая', 'Ягоды используются для приготовления варенья и соков.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Черника обыкновенная'), 'Лекарственная', 'Ягоды укрепляют зрение и улучшают пищеварение.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Осина обыкновенная'), 'Декоративная', 'Быстрорастущее дерево, используемое в ландшафтном дизайне.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Лютик едкий'), 'Лекарственная', 'Используется для лечения кожных заболеваний.'),
-((SELECT ID FROM Plants WHERE plant_name = 'Лютик едкий'), 'Пищевая', 'Листья используются в салатах.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Черемуха обыкновенная'), 'Пищевая', 'Ягоды используются для приготовления варенья.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Вяз гладкий'), 'Декоративная', 'Крупное дерево с красивой кроной, используется в парках.'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Ольха серая'), 'Лекарственная', 'Бark используется для приготовления настоек.'),
@@ -675,7 +672,7 @@ CREATE TABLE Habitats (
 
 CREATE TABLE Plant_Habitats (
     ID UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    plant_id UUID REFERENCES Plants(ID) NOT NULL,
+    plant_id UUID REFERENCES Plants(ID) NOT NULL ON DELETE CASCADE,
     habitat_id UUID REFERENCES Habitats(ID) NOT NULL,
     "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
