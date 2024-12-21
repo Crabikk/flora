@@ -353,15 +353,16 @@ INSERT INTO Benefits (plant_id, benefit_type, description) VALUES
 
 ```sql
 INSERT INTO Harvest_Info (plant_id, harvest_time, harvest_method) VALUES
-((SELECT ID FROM Plants WHERE plant_name = 'Дуб черешчатый'), 'Осень', 'Сбор с использованием ножниц'),
-((SELECT ID FROM Plants WHERE plant_name = 'Клен остролистный'), 'Осень', 'Сбор с использованием ножниц'),
+((SELECT ID FROM Plants WHERE plant_name = 'Дуб черешчатый'), 'Осень', 'Ручной сбор'),
+((SELECT ID FROM Plants WHERE plant_name = 'Клен остролистный'), 'Осень', 'Ручной сбор'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Рябина обыкновенная'), 'Осень', 'Сбор с использованием ножниц'),
-((SELECT ID FROM Plants WHERE plant_name = 'Береза пушистая'), 'Весна', 'Сбор с использованием косы'),
-((SELECT ID FROM Plants WHERE plant_name = 'Ольха серая'), 'Весна', 'Сбор с использованием косы'),
-((SELECT ID FROM Plants WHERE plant_name = 'Ива белая'), 'Весна', 'Сбор с использованием косы'),
+((SELECT ID FROM Plants WHERE plant_name = 'Береза пушистая'), 'Весна', 'Сбор с использованием ножниц'),
+((SELECT ID FROM Plants WHERE plant_name = 'Ольха серая'), 'Весна', 'Сбор с использованием ножниц'),
+((SELECT ID FROM Plants WHERE plant_name = 'Ива белая'), 'Весна', 'Сбор с использованием ножниц'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Вяз гладкий'), 'Осень', 'Сбор с использованием ножниц'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Осина обыкновенная'), 'Осень', 'Сбор с использованием ножниц'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Калина обыкновенная'), 'Осень', 'Сбор с использованием ножниц'),
+((SELECT ID FROM Plants WHERE plant_name = 'Одуванчик лекарственный'), 'Лето', 'Сбор с использованием косы'),
 ((SELECT ID FROM Plants WHERE plant_name = 'Базилик'), 'Лето', 'Сбор с использованием ножниц');
 ```
 
